@@ -2,6 +2,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import type { Hero as HeroType } from '../types/portfolio';
 import { useReducedMotion } from '../hooks/useReducedMotion';
+import AnimatedSphere from './AnimatedSphere';
+import FloatingIcons3D from './FloatingIcons3D';
 
 interface Props {
   data: HeroType;
@@ -42,16 +44,25 @@ export default function Hero({ data }: Props) {
     <section
       ref={heroRef}
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 via-accent-50 to-primary-100 dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-cyan-50 via-violet-50 to-blue-50 dark:from-secondary-900 dark:via-neutral-900 dark:to-neutral-800"
       aria-label="Hero section"
     >
-      {/* Animated gradient orbs */}
+      {/* Floating 3D Icons Background */}
+      <FloatingIcons3D />
+
+      {/* Enhanced 3D Animated Spheres */}
+      <AnimatedSphere size={400} color="cyan" position="top-left" delay={0} />
+      <AnimatedSphere size={500} color="violet" position="top-right" delay={2} />
+      <AnimatedSphere size={450} color="blue" position="bottom-left" delay={4} />
+      <AnimatedSphere size={350} color="mixed" position="bottom-right" delay={6} />
+
+      {/* Animated gradient orbs - Enhanced Navy, Cyan, Violet */}
       {!shouldReduceMotion && (
         <>
           <motion.div
-            className="absolute top-1/4 -left-1/4 w-96 h-96 rounded-full opacity-30"
+            className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] rounded-full opacity-40"
             style={{
-              background: 'radial-gradient(circle, var(--color-primary-400), transparent)',
+              background: 'radial-gradient(circle, rgba(34, 211, 238, 0.4), transparent)',
               y,
             }}
             animate={{
@@ -61,9 +72,9 @@ export default function Hero({ data }: Props) {
             transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
           />
           <motion.div
-            className="absolute bottom-1/4 -right-1/4 w-96 h-96 rounded-full opacity-30"
+            className="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full opacity-40"
             style={{
-              background: 'radial-gradient(circle, var(--color-accent-400), transparent)',
+              background: 'radial-gradient(circle, rgba(168, 85, 247, 0.4), transparent)',
               y,
             }}
             animate={{
@@ -72,113 +83,144 @@ export default function Hero({ data }: Props) {
             }}
             transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
           />
+          <motion.div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20"
+            style={{
+              background: 'radial-gradient(circle, rgba(14, 165, 233, 0.3), transparent)',
+            }}
+            animate={{
+              scale: [1, 1.3, 1],
+              rotate: [0, 180, 360],
+            }}
+            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+          />
         </>
       )}
 
-      {/* Content */}
+      {/* Content - Perfectly Centered & Responsive */}
       <motion.div
         style={{ opacity }}
-        className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 text-center"
       >
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-8"
+          className="space-y-6 sm:space-y-8 md:space-y-10"
         >
-          {/* Greeting */}
+          {/* Greeting Badge - Responsive */}
           <motion.div variants={itemVariants}>
-            <span className="inline-block px-6 py-2 rounded-full glass-light text-sm font-medium text-primary-600 dark:text-primary-400">
-              👋 Welcome to my portfolio
+            <span className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full glass-light text-sm sm:text-lg md:text-xl font-bold text-cyan-600 dark:text-cyan-400 shadow-2xl border-2 border-cyan-300/70 dark:border-cyan-500/50">
+              <span className="text-xl sm:text-2xl md:text-3xl">👋</span>
+              <span className="hidden xs:inline">Welcome to my portfolio</span>
+              <span className="xs:hidden">Welcome</span>
             </span>
           </motion.div>
 
-          {/* Name */}
+          {/* Name - MUCH LARGER with 3D Effect - Responsive */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight"
+            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-none px-2"
+            style={{
+              textShadow: '4px 4px 8px rgba(0, 0, 0, 0.15), 0 0 40px rgba(34, 211, 238, 0.2)'
+            }}
           >
-            <span className="block text-neutral-900 dark:text-white font-['Space_Grotesk']">
+            <span className="block text-neutral-900 dark:text-white font-['Space_Grotesk'] mb-2 sm:mb-4">
               {data.name}
             </span>
           </motion.h1>
 
-          {/* Title with gradient */}
+          {/* Title with Enhanced Gradient - LARGER - Responsive */}
           <motion.div variants={itemVariants}>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold gradient-text">
+            <h2 
+              className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 leading-tight px-2"
+              style={{
+                textShadow: '0 0 60px rgba(168, 85, 247, 0.3)'
+              }}
+            >
               {data.title}
             </h2>
           </motion.div>
 
-          {/* Tagline */}
+          {/* Tagline - LARGER & Better Readability - Responsive */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto leading-relaxed"
+            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-neutral-600 dark:text-neutral-300 max-w-xs xs:max-w-sm sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed font-medium px-4"
           >
             {data.tagline}
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - LARGER with 3D Effects - Responsive */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 md:gap-6 pt-4 sm:pt-6 md:pt-8 px-4"
           >
             <motion.a
               href={data.cta.primary.href}
-              className="group relative px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white font-semibold rounded-full overflow-hidden shadow-xl"
-              whileHover={{ scale: shouldReduceMotion ? 1 : 1.05, boxShadow: 'var(--shadow-2xl)' }}
-              whileTap={{ scale: shouldReduceMotion ? 1 : 0.95 }}
+              className="group relative w-full sm:w-auto px-8 sm:px-10 md:px-12 py-3 sm:py-4 md:py-5 bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-600 text-white font-bold text-base sm:text-lg md:text-xl rounded-2xl overflow-hidden shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300"
+              style={{
+                boxShadow: '0 10px 40px rgba(34, 211, 238, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset'
+              }}
+              whileHover={{ scale: shouldReduceMotion ? 1 : 1.05, y: -2 }}
+              whileTap={{ scale: shouldReduceMotion ? 1 : 0.98 }}
             >
-              <span className="relative z-10 flex items-center gap-2">
-                {data.cta.primary.text}
+              <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
+                <span>{data.cta.primary.text}</span>
                 <motion.svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 md:w-6 sm:h-5 md:h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
-                  animate={{ x: [0, 5, 0] }}
+                  strokeWidth={2.5}
+                  animate={shouldReduceMotion ? {} : { x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </motion.svg>
               </span>
-              <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-violet-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.a>
 
             <motion.a
               href={data.cta.secondary.href}
-              className="px-8 py-4 glass text-neutral-900 dark:text-white font-semibold rounded-full border-2 border-primary-200 dark:border-primary-800 hover:border-primary-400 dark:hover:border-primary-600 transition-colors"
-              whileHover={{ scale: shouldReduceMotion ? 1 : 1.05 }}
-              whileTap={{ scale: shouldReduceMotion ? 1 : 0.95 }}
+              className="group w-full sm:w-auto px-8 sm:px-10 md:px-12 py-3 sm:py-4 md:py-5 glass-light text-neutral-900 dark:text-white font-bold text-base sm:text-lg md:text-xl rounded-2xl border-2 border-cyan-300/70 dark:border-violet-500/50 hover:border-cyan-500 dark:hover:border-violet-400 transition-all duration-300 hover:shadow-2xl"
+              style={{
+                boxShadow: '0 5px 20px rgba(168, 85, 247, 0.2)'
+              }}
+              whileHover={{ scale: shouldReduceMotion ? 1 : 1.05, y: -2 }}
+              whileTap={{ scale: shouldReduceMotion ? 1 : 0.98 }}
             >
-              {data.cta.secondary.text}
+              <span className="flex items-center justify-center gap-2">
+                {data.cta.secondary.text}
+              </span>
             </motion.a>
           </motion.div>
 
-          {/* Scroll indicator */}
+          {/* Scroll Indicator - With More Spacing - Responsive */}
           <motion.div
             variants={itemVariants}
-            className="pt-16"
+            className="pt-16 sm:pt-24 md:pt-32 lg:pt-40 flex justify-center"
           >
             <motion.button
-              className="flex flex-col items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors cursor-pointer"
+              onClick={() => {
+                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="flex flex-col items-center gap-2 sm:gap-3 text-neutral-500 dark:text-neutral-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer group mx-auto"
               animate={shouldReduceMotion ? {} : {
                 y: [0, 10, 0],
               }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              onClick={() => {
-                const aboutSection = document.getElementById('about');
-                aboutSection?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              aria-label="Scroll to about section"
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              aria-label="Scroll to content"
             >
-              <span className="text-sm font-medium">Scroll Down</span>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              <span className="text-xs sm:text-sm font-medium tracking-wide uppercase">Scroll to explore</span>
+              <svg
+                className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </motion.button>
           </motion.div>

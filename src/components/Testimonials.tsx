@@ -24,14 +24,14 @@ export default function Testimonials({ data }: TestimonialsProps) {
   if (!data || data.length === 0) return null;
 
   return (
-    <section id="testimonials" className="py-20 px-4 bg-white dark:bg-gray-800">
-      <div className="max-w-6xl mx-auto">
+    <section id="testimonials" className="py-32 px-6 md:px-8 bg-gradient-to-br from-white via-cyan-50/30 to-violet-50/30 dark:bg-gradient-to-br dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900">
+      <div className="max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 text-center"
+          className="text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 dark:text-white mb-6 text-center font-['Space_Grotesk']"
         >
           Client Testimonials
         </motion.h2>
@@ -41,7 +41,7 @@ export default function Testimonials({ data }: TestimonialsProps) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto"
+          className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 text-center mb-20 max-w-3xl mx-auto"
         >
           What people say about working with me
         </motion.p>
@@ -51,47 +51,50 @@ export default function Testimonials({ data }: TestimonialsProps) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="flex flex-wrap justify-center gap-8"
         >
           {data.map((testimonial) => (
             <motion.div
               key={testimonial.id}
               variants={item}
-              whileHover={{ y: -5 }}
-              className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow"
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="glass-light rounded-2xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all w-full max-w-md"
+              style={{
+                boxShadow: '0 10px 40px rgba(34, 211, 238, 0.15)'
+              }}
             >
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex flex-col items-center mb-6">
                 <img
                   src={testimonial.avatar}
                   alt={testimonial.name}
-                  className="w-14 h-14 rounded-full bg-gray-200 dark:bg-gray-700"
+                  className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-violet-500 p-1 mb-4"
                 />
-                <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">
+                <div className="text-center">
+                  <h3 className="font-bold text-xl text-neutral-900 dark:text-white mb-1">
                     {testimonial.name}
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <p className="text-base text-neutral-600 dark:text-neutral-400">
                     {testimonial.role}
                   </p>
                 </div>
               </div>
 
-              <div className="flex gap-1 mb-3">
+              <div className="flex gap-1 mb-4 justify-center">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <motion.span
                     key={i}
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: i * 0.1 }}
+                    transition={{ delay: 0.3 + i * 0.1 }}
                     viewport={{ once: true }}
-                    className="text-yellow-400"
+                    className="text-yellow-400 text-xl"
                   >
-                    ⭐
+                    ★
                   </motion.span>
                 ))}
               </div>
 
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed text-center text-base">
                 "{testimonial.content}"
               </p>
             </motion.div>

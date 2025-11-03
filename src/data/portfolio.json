@@ -1,11 +1,11 @@
 {
   "seo": {
-    "title": "Jane Doe - Full-Stack Developer & Creative Technologist",
-    "description": "Portfolio of Jane Doe, a passionate full-stack developer with 5+ years of experience in React, TypeScript, and modern web technologies.",
-    "keywords": "full-stack developer, react developer, typescript, web development, portfolio, creative technologist",
-    "author": "Jane Doe",
-    "ogImage": "https://via.placeholder.com/1200x630/6366f1/ffffff?text=Jane+Doe+Portfolio",
-    "siteUrl": "https://janedoe-portfolio.com"
+    "title": "Faizan Khan - AI-Focused Full Stack Developer | Python, Django, React, SQL",
+    "description": "Portfolio of Faizan Khan, a passionate AI-focused full stack developer with expertise in Python, Django, React, and SQL. Building intelligent and scalable web applications.",
+    "keywords": "full-stack developer, python developer, django, react developer, SQL, AI developer, web development, REST API, portfolio",
+    "author": "Faizan Khan",
+    "ogImage": "https://via.placeholder.com/1200x630/6366f1/ffffff?text=Faizan+Khan+Portfolio",
+    "siteUrl": "https://faizankhan-portfolio.com"
   },
   "settings": {
     "sectionOrder": ["hero", "about", "projects", "skills", "testimonials", "timeline", "contact"],
@@ -20,9 +20,9 @@
     }
   },
   "hero": {
-    "name": "Jane Doe",
-    "title": "Full-Stack Developer & Creative Technologist",
-    "tagline": "Building elegant solutions with modern web technologies",
+    "name": "Faizan Khan",
+    "title": "AI-Focused Full Stack Developer | Python, Django, React, SQL",
+    "tagline": "Building Intelligent and Scalable Web Applications",
     "cta": {
       "primary": {
         "text": "View My Work",
@@ -35,67 +35,86 @@
     }
   },
   "about": {
-    "paragraph": "I'm a passionate developer with 5+ years of experience crafting responsive web applications. I specialize in React, TypeScript, and modern UI/UX design patterns. My goal is to create digital experiences that are not only functional but also delightful to use."
+    "paragraph": "Python, Django, and React Web Developer with hands-on experience in web development and REST APIs. Completed a Udemy certification and skilled in data entry, teamwork, and project management. Passionate about Artificial Intelligence (AI) and modern web technologies, always learning and focused on delivering high-quality, scalable solutions."
   },
   "projects": [
     {
       "id": "proj-1",
-      "title": "E-Commerce Platform",
-      "summary": "A full-featured online store with real-time inventory management and secure payment integration.",
-      "tags": ["React", "Node.js", "MongoDB", "Stripe"],
-      "thumbnailPlaceholder": "https://via.placeholder.com/400x300/6366f1/ffffff?text=E-Commerce",
-      "shortDescription": "Built a scalable e-commerce solution serving 10k+ monthly users with seamless checkout experience.",
-      "demoUrl": "https://demo.example.com",
-      "repoUrl": "https://github.com/yourusername/ecommerce",
+      "title": "Recipe Recommendation System",
+      "summary": "AI-based recipe recommendation web app using Django with TF-IDF and cosine similarity for personalized suggestions.",
+      "tags": ["Python", "Django", "AI", "TF-IDF", "Bootstrap", "Machine Learning"],
+      "thumbnailPlaceholder": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=600&fit=crop&q=80",
+      "shortDescription": "Developed an AI-based recipe recommendation web app using Django with TF-IDF and cosine similarity for personalized suggestions. Added ingredient search, dietary filters, and feedback features with a responsive Bootstrap UI. The system analyzes user preferences and suggests recipes based on available ingredients and dietary requirements.",
+      "demoUrl": "#",
+      "repoUrl": "https://github.com/faizankhan/recipe-recommendation",
       "featured": true
     },
     {
       "id": "proj-2",
-      "title": "Task Management App",
-      "summary": "Collaborative task tracker with real-time updates and team management features.",
-      "tags": ["TypeScript", "React", "Firebase", "Tailwind"],
-      "thumbnailPlaceholder": "https://via.placeholder.com/400x300/8b5cf6/ffffff?text=Task+Manager",
-      "shortDescription": "A productivity tool helping teams organize workflows with drag-and-drop interfaces.",
-      "demoUrl": "https://tasks-demo.example.com",
-      "repoUrl": "https://github.com/yourusername/tasks",
-      "featured": false
+      "title": "Blog Application",
+      "summary": "Dynamic blog site with full CRUD operations, user comments, and responsive design.",
+      "tags": ["Python", "Django", "SQLite", "HTML", "CSS", "JavaScript"],
+      "thumbnailPlaceholder": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop&q=80",
+      "shortDescription": "Developed a dynamic blog site using Python, Django, HTML, CSS, and JavaScript. Implemented features to create, edit, and delete posts with user comments. Designed a responsive and user-friendly interface and managed data storage using SQLite. Includes authentication system and rich text editor for content creation.",
+      "demoUrl": "#",
+      "repoUrl": "https://github.com/faizankhan/blog-application",
+      "featured": true
     },
     {
       "id": "proj-3",
-      "title": "Weather Dashboard",
-      "summary": "Beautiful weather visualization with forecasts and interactive maps.",
-      "tags": ["React", "OpenWeather API", "Chart.js", "CSS"],
-      "thumbnailPlaceholder": "https://via.placeholder.com/400x300/ec4899/ffffff?text=Weather+App",
-      "shortDescription": "Real-time weather data presented through stunning visualizations and animations.",
-      "demoUrl": "https://weather-demo.example.com",
-      "repoUrl": "https://github.com/yourusername/weather",
+      "title": "Social Media Clone",
+      "summary": "Full-featured social media web app with authentication, profiles, and real-time interactions.",
+      "tags": ["Python", "Django", "SQLite", "Authentication", "Responsive Design"],
+      "thumbnailPlaceholder": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop&q=80",
+      "shortDescription": "Built a social media web app using Django with user authentication, profiles, posts, likes, comments, and follows, featuring a mobile-friendly design and SQLite database. Implements real-time notifications, image uploads, and user activity feeds with a modern, intuitive interface.",
+      "demoUrl": "#",
+      "repoUrl": "https://github.com/faizankhan/social-media-clone",
       "featured": true
+    },
+    {
+      "id": "proj-4",
+      "title": "Personal Portfolio Website",
+      "summary": "Modern portfolio website built with React and TypeScript with 3D animations and responsive design.",
+      "tags": ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design"],
+      "thumbnailPlaceholder": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80",
+      "shortDescription": "Built a personal portfolio website using React and TypeScript, showcasing projects, skills, and contact details with data managed in JSON and a fully responsive design. Features 3D CSS animations, custom components, and mobile-first approach for optimal viewing on all devices.",
+      "demoUrl": "#",
+      "repoUrl": "https://github.com/faizankhan/portfolio",
+      "featured": false
     }
   ],
   "skills": [
     {
-      "name": "React & TypeScript",
+      "name": "React.js & Redux Toolkit",
+      "level": 90
+    },
+    {
+      "name": "Django & Django REST Framework",
       "level": 95
     },
     {
-      "name": "Node.js & Express",
+      "name": "Python & RESTful API Design",
+      "level": 92
+    },
+    {
+      "name": "MySQL & Database Design",
       "level": 85
     },
     {
-      "name": "UI/UX Design",
+      "name": "Tailwind CSS & Material UI",
+      "level": 88
+    },
+    {
+      "name": "JWT Authentication & Security",
+      "level": 82
+    },
+    {
+      "name": "Git & GitHub",
+      "level": 87
+    },
+    {
+      "name": "Project Management & Team Collaboration",
       "level": 80
-    },
-    {
-      "name": "Database Design (SQL/NoSQL)",
-      "level": 85
-    },
-    {
-      "name": "DevOps & CI/CD",
-      "level": 75
-    },
-    {
-      "name": "Three.js & WebGL",
-      "level": 70
     }
   ],
   "testimonials": [
@@ -127,39 +146,39 @@
   "timeline": [
     {
       "id": "time-1",
-      "year": "2023 - Present",
-      "title": "Senior Full-Stack Developer",
-      "company": "Tech Innovations Inc.",
-      "description": "Leading development of enterprise-level web applications. Managing a team of 5 developers and architecting scalable solutions.",
-      "type": "work"
+      "year": "2022 - 2026",
+      "title": "Bachelor in Computer Science",
+      "company": "National University of Modern Languages (NUML)",
+      "description": "Currently pursuing Bachelor's degree in Computer Science with focus on AI, web development, and modern technologies. Developing expertise in Python, Django, React, and artificial intelligence applications.",
+      "type": "education"
     },
     {
       "id": "time-2",
-      "year": "2021 - 2023",
-      "title": "Full-Stack Developer",
-      "company": "Digital Solutions Ltd.",
-      "description": "Developed and maintained multiple client projects using React, Node.js, and cloud technologies. Improved application performance by 40%.",
-      "type": "work"
+      "year": "2024",
+      "title": "Web Development Certification",
+      "company": "Udemy",
+      "description": "Completed comprehensive web development certification covering Python, Django, React, and REST APIs. Gained hands-on experience building full-stack applications.",
+      "type": "education"
     },
     {
       "id": "time-3",
-      "year": "2020 - 2021",
-      "title": "Frontend Developer",
-      "company": "Creative Studio",
-      "description": "Built responsive web applications and interactive user interfaces. Collaborated with designers to create pixel-perfect implementations.",
-      "type": "work"
+      "year": "2024",
+      "title": "Web 5 Fundamentals - A New Evolution of Web Data Ownership",
+      "company": "Certification Course",
+      "description": "Studied the next generation of web technologies focusing on decentralized data ownership and user-centric web applications.",
+      "type": "education"
     },
     {
       "id": "time-4",
-      "year": "2016 - 2020",
-      "title": "Bachelor of Computer Science",
-      "company": "Tech University",
-      "description": "Graduated with honors. Focus on software engineering, web technologies, and human-computer interaction.",
+      "year": "2023",
+      "title": "Microsoft Office Certification",
+      "company": "Peak Solution College",
+      "description": "Completed Microsoft Office certification, enhancing productivity skills and proficiency in professional software tools.",
       "type": "education"
     }
   ],
   "contact": {
-    "email": "jane.doe@example.com",
+    "email": "faizankhan15658@gmail.com",
     "message": "Let's build something amazing together",
     "placeholders": {
       "name": "Your Name",
@@ -169,15 +188,15 @@
     "social": [
       {
         "platform": "LinkedIn",
-        "url": "https://linkedin.com/in/janedoe"
+        "url": "https://www.linkedin.com/in/faizan-khan-a40566263/"
       },
       {
         "platform": "GitHub",
-        "url": "https://github.com/janedoe"
+        "url": "https://github.com/faizankhan"
       },
       {
-        "platform": "Twitter",
-        "url": "https://twitter.com/janedoe"
+        "platform": "Phone",
+        "url": "tel:+923104622935"
       }
     ]
   }

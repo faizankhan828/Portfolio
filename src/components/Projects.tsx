@@ -74,7 +74,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
       onMouseLeave={handleMouseLeave}
       whileHover={shouldReduceMotion ? {} : { scale: 1.03, z: 50 }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className="glass rounded-3xl overflow-hidden cursor-pointer group relative depth-3d"
+      className="glass rounded-3xl cursor-pointer group relative depth-3d w-full"
       onClick={onClick}
       onKeyPress={handleKeyPress}
       tabIndex={0}
@@ -91,7 +91,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
         }}
       />
       
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative h-72 sm:h-80 md:h-96 overflow-hidden rounded-t-3xl">
         <LazyImage 
           src={project.thumbnailPlaceholder} 
           alt={`${project.title} screenshot`}
@@ -99,7 +99,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
         />
         {project.featured && (
           <motion.div 
-            className="absolute top-4 right-4 px-3 py-1.5 glass-light rounded-full text-sm font-bold text-accent-400 border border-accent-400/30"
+            className="absolute top-5 right-5 px-4 py-2 glass-light rounded-full text-sm sm:text-base font-bold text-accent-400 border border-accent-400/30 shadow-lg backdrop-blur-md"
             aria-label="Featured project"
             animate={shouldReduceMotion ? {} : { scale: [1, 1.05, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -111,37 +111,32 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
       </div>
       
       <motion.div 
-        className="p-6 relative"
+        className="p-12 sm:p-14 md:p-16 relative flex flex-col overflow-visible"
         style={shouldReduceMotion ? {} : { transform: "translateZ(40px)" }}
       >
-        <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-2 group-hover:gradient-text transition-all duration-300 font-['Space_Grotesk']">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-5 group-hover:gradient-text transition-all duration-300 font-['Space_Grotesk'] leading-tight break-words">
           {project.title}
         </h3>
         
-        <p className="text-neutral-600 dark:text-neutral-300 mb-4 line-clamp-2">
+        <p className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-300 mb-8 leading-relaxed break-words">
           {project.summary}
         </p>
         
-        <div className="flex flex-wrap gap-2 mb-4" role="list" aria-label="Technologies used">
-          {project.tags.slice(0, 3).map((tag, index) => (
+        <div className="flex flex-wrap gap-3 mb-8" role="list" aria-label="Technologies used">
+          {project.tags.map((tag, index) => (
             <span
               key={index}
-              className="px-3 py-1 glass-light text-primary-600 dark:text-primary-400 rounded-lg text-xs font-semibold border border-primary-400/20"
+              className="px-4 py-2 glass-light text-primary-600 dark:text-primary-400 rounded-lg text-sm sm:text-base font-semibold border border-primary-400/20"
               role="listitem"
             >
               {tag}
             </span>
           ))}
-          {project.tags.length > 3 && (
-            <span className="px-3 py-1 glass-light text-accent-600 dark:text-accent-400 rounded-lg text-xs font-semibold border border-accent-400/20">
-              +{project.tags.length - 3}
-            </span>
-          )}
         </div>
         
-        <div className="flex items-center gap-2 text-sm font-semibold text-primary-600 dark:text-primary-400 group-hover:translate-x-2 transition-transform duration-300">
+        <div className="flex items-center gap-3 text-base sm:text-lg font-semibold text-primary-600 dark:text-primary-400 group-hover:translate-x-2 transition-transform duration-300 mt-auto">
           <span>View Details</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </div>
@@ -300,7 +295,7 @@ export default function Projects({ data }: ProjectsProps) {
     : data.filter(p => p.tags.includes(filter));
 
   return (
-    <section id="projects" className="section-container relative py-32 px-4 overflow-hidden" aria-labelledby="projects-heading">
+    <section id="projects" className="section-container relative py-32 px-6 sm:px-8 overflow-hidden" aria-labelledby="projects-heading">
       {/* Decorative gradient orb */}
       <motion.div
         className="absolute top-20 right-20 w-96 h-96 bg-accent-400/20 rounded-full blur-3xl"
@@ -371,7 +366,7 @@ export default function Projects({ data }: ProjectsProps) {
           variants={container}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-10 w-full px-2"
           role="list"
           aria-label="Project cards"
         >

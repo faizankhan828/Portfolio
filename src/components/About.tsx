@@ -2,6 +2,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import type { About as AboutType } from '../types/portfolio';
 import { useRef } from 'react';
 import { useReducedMotion } from '../hooks/useReducedMotion';
+import FloatingCard3D from './FloatingCard3D';
+import AnimatedSphere from './AnimatedSphere';
 
 interface AboutProps {
   data: AboutType;
@@ -23,60 +25,90 @@ export default function About({ data }: AboutProps) {
     <section 
       id="about" 
       ref={containerRef}
-      className="section-container relative bg-white dark:bg-neutral-900"
+      className="section-container relative py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-cyan-50/50 via-white to-violet-50/50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800"
     >
-      {/* Decorative gradient orb */}
+      {/* Decorative gradient orbs + 3D Spheres */}
       {!shouldReduceMotion && (
-        <motion.div
-          className="absolute top-1/2 right-0 w-96 h-96 rounded-full opacity-20 blur-3xl"
-          style={{
-            background: 'radial-gradient(circle, var(--color-accent-400), transparent)',
-            y,
-          }}
-        />
+        <>
+          <AnimatedSphere size={350} color="cyan" position="top-left" delay={0} />
+          <AnimatedSphere size={300} color="violet" position="bottom-right" delay={3} />
+          
+          <motion.div
+            className="absolute top-20 left-0 w-96 h-96 rounded-full opacity-20 blur-3xl"
+            style={{
+              background: 'radial-gradient(circle, rgba(34, 211, 238, 0.4), transparent)',
+              y,
+            }}
+          />
+          <motion.div
+            className="absolute bottom-20 right-0 w-96 h-96 rounded-full opacity-20 blur-3xl"
+            style={{
+              background: 'radial-gradient(circle, rgba(168, 85, 247, 0.4), transparent)',
+              y: useTransform(scrollYProgress, [0, 1], [-100, 100]),
+            }}
+          />
+        </>
       )}
 
       <motion.div 
-        className="relative z-10 max-w-4xl mx-auto"
+        className="relative z-10 max-w-5xl mx-auto"
         style={shouldReduceMotion ? {} : { opacity }}
       >
+        {/* Section Header - Perfectly Centered - Responsive */}
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16 md:mb-20"
         >
           <motion.div
-            className="inline-block mb-4"
+            className="inline-flex items-center justify-center mb-4 sm:mb-6"
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: 0.2 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6, delay: 0.2, type: "spring" }}
             viewport={{ once: true }}
           >
-            <span className="text-4xl">👨‍💻</span>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center text-2xl sm:text-3xl shadow-xl">
+              👨‍💻
+            </div>
           </motion.div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-4 font-['Space_Grotesk']">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white mb-4 sm:mb-6 font-['Space_Grotesk'] leading-tight px-4">
             About Me
           </h2>
           
-          <div className="w-24 h-1 mx-auto bg-gradient-to-r from-primary-500 to-accent-500 rounded-full" />
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="w-16 h-1 bg-gradient-to-r from-transparent to-cyan-500 rounded-full" />
+            <div className="w-24 h-1.5 bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-600 rounded-full" />
+            <div className="w-16 h-1 bg-gradient-to-l from-transparent to-violet-600 rounded-full" />
+          </div>
+
+          <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+            Passionate about creating exceptional digital experiences
+          </p>
         </motion.div>
 
-        {/* Main content card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: shouldReduceMotion ? 0 : 0.8, delay: 0.3 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="glass rounded-3xl p-8 md:p-12 relative overflow-hidden"
-        >
+        {/* Main Content Card - Enhanced with 3D Effect */}
+        <FloatingCard3D intensity={15} className="w-full">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.8, delay: 0.3 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="glass-light rounded-3xl p-12 sm:p-14 md:p-16 lg:p-20 relative overflow-visible shadow-2xl"
+            style={{
+              boxShadow: '0 25px 60px -15px rgba(34, 211, 238, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) inset'
+            }}
+          >
+          {/* Gradient border effect */}
+          <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-400/20 via-transparent to-violet-600/20 pointer-events-none" />
+          
           {/* Animated corner accents */}
           {!shouldReduceMotion && (
             <>
               <motion.div
-                className="absolute top-0 left-0 w-20 h-20 border-t-4 border-l-4 border-primary-400 rounded-tl-3xl"
+                className="absolute top-0 left-0 w-24 h-24 border-t-4 border-l-4 border-cyan-400 rounded-tl-3xl opacity-50"
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 0.5, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
@@ -112,7 +144,7 @@ export default function About({ data }: AboutProps) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.8, delay: 0.5 }}
             viewport={{ once: true }}
-            className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 leading-relaxed text-center max-w-2xl mx-auto"
+            className="text-lg sm:text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-relaxed text-center max-w-3xl mx-auto px-4 break-words"
           >
             {data.paragraph}
           </motion.p>
@@ -123,7 +155,7 @@ export default function About({ data }: AboutProps) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.8, delay: 0.6 }}
             viewport={{ once: true }}
-            className="mt-12 flex flex-wrap justify-center gap-3"
+            className="mt-12 flex flex-wrap justify-center gap-4"
           >
             {['React', 'TypeScript', 'Node.js', 'UI/UX', 'Framer Motion'].map((skill, index) => (
               <motion.span
@@ -139,38 +171,8 @@ export default function About({ data }: AboutProps) {
               </motion.span>
             ))}
           </motion.div>
-
-          {/* Stats or highlights */}
-          <motion.div
-            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.8, delay: 0.8 }}
-            viewport={{ once: true }}
-            className="mt-12 grid grid-cols-3 gap-6 pt-8 border-t border-neutral-200 dark:border-neutral-700"
-          >
-            {[
-              { value: '5+', label: 'Years Experience' },
-              { value: '50+', label: 'Projects' },
-              { value: '100%', label: 'Client Satisfaction' },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: 0.9 + index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-sm text-neutral-600 dark:text-neutral-400">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
           </motion.div>
-        </motion.div>
+        </FloatingCard3D>
       </motion.div>
     </section>
   );
