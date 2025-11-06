@@ -1,9 +1,9 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
-import type { Hero as HeroType } from '../types/portfolio';
-import { useReducedMotion } from '../hooks/useReducedMotion';
-import AnimatedSphere from './AnimatedSphere';
-import FloatingIcons3D from './FloatingIcons3D';
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import type { Hero as HeroType } from "../types/portfolio";
+import { useReducedMotion } from "../hooks/useReducedMotion";
+import AnimatedSphere from "./AnimatedSphere";
+import FloatingIcons3D from "./FloatingIcons3D";
 
 interface Props {
   data: HeroType;
@@ -12,13 +12,13 @@ interface Props {
 export default function Hero({ data }: Props) {
   const shouldReduceMotion = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0]);
 
   const containerVariants = {
@@ -52,9 +52,24 @@ export default function Hero({ data }: Props) {
 
       {/* Enhanced 3D Animated Spheres */}
       <AnimatedSphere size={400} color="cyan" position="top-left" delay={0} />
-      <AnimatedSphere size={500} color="violet" position="top-right" delay={2} />
-      <AnimatedSphere size={450} color="blue" position="bottom-left" delay={4} />
-      <AnimatedSphere size={350} color="mixed" position="bottom-right" delay={6} />
+      <AnimatedSphere
+        size={500}
+        color="violet"
+        position="top-right"
+        delay={2}
+      />
+      <AnimatedSphere
+        size={450}
+        color="blue"
+        position="bottom-left"
+        delay={4}
+      />
+      <AnimatedSphere
+        size={350}
+        color="mixed"
+        position="bottom-right"
+        delay={6}
+      />
 
       {/* Animated gradient orbs - Enhanced Navy, Cyan, Violet */}
       {!shouldReduceMotion && (
@@ -62,37 +77,45 @@ export default function Hero({ data }: Props) {
           <motion.div
             className="absolute top-1/4 -left-1/4 w-[500px] h-[500px] rounded-full opacity-40"
             style={{
-              background: 'radial-gradient(circle, rgba(34, 211, 238, 0.4), transparent)',
+              background:
+                "radial-gradient(circle, rgba(34, 211, 238, 0.4), transparent)",
               y,
             }}
             animate={{
               scale: [1, 1.2, 1],
               x: [0, 50, 0],
             }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
             className="absolute bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full opacity-40"
             style={{
-              background: 'radial-gradient(circle, rgba(168, 85, 247, 0.4), transparent)',
+              background:
+                "radial-gradient(circle, rgba(168, 85, 247, 0.4), transparent)",
               y,
             }}
             animate={{
               scale: [1.2, 1, 1.2],
               x: [0, -50, 0],
             }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
           />
           <motion.div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20"
             style={{
-              background: 'radial-gradient(circle, rgba(14, 165, 233, 0.3), transparent)',
+              background:
+                "radial-gradient(circle, rgba(14, 165, 233, 0.3), transparent)",
             }}
             animate={{
               scale: [1, 1.3, 1],
               rotate: [0, 180, 360],
             }}
-            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
           />
         </>
       )}
@@ -122,7 +145,8 @@ export default function Hero({ data }: Props) {
             variants={itemVariants}
             className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight leading-none px-2"
             style={{
-              textShadow: '4px 4px 8px rgba(0, 0, 0, 0.15), 0 0 40px rgba(34, 211, 238, 0.2)'
+              textShadow:
+                "4px 4px 8px rgba(0, 0, 0, 0.15), 0 0 40px rgba(34, 211, 238, 0.2)",
             }}
           >
             <span className="block text-neutral-900 dark:text-white font-['Space_Grotesk'] mb-2 sm:mb-4">
@@ -132,10 +156,11 @@ export default function Hero({ data }: Props) {
 
           {/* Title with Enhanced Gradient - LARGER - Responsive */}
           <motion.div variants={itemVariants}>
-            <h2 
-              className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 leading-tight px-2"
+            <h2
+              className="hero-title-white text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight px-2"
               style={{
-                textShadow: '0 0 60px rgba(168, 85, 247, 0.3)'
+                textShadow:
+                  "0 4px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 255, 255, 0.1)",
               }}
             >
               {data.title}
@@ -145,7 +170,10 @@ export default function Hero({ data }: Props) {
           {/* Tagline - LARGER & Better Readability - Responsive */}
           <motion.p
             variants={itemVariants}
-            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-neutral-600 dark:text-neutral-300 max-w-xs xs:max-w-sm sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed font-medium px-4"
+            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-cyan-700 dark:text-cyan-300 max-w-xs xs:max-w-sm sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto leading-relaxed font-semibold px-4"
+            style={{
+              textShadow: "0 2px 10px rgba(6, 182, 212, 0.3)",
+            }}
           >
             {data.tagline}
           </motion.p>
@@ -159,7 +187,8 @@ export default function Hero({ data }: Props) {
               href={data.cta.primary.href}
               className="group relative w-full sm:w-auto px-8 sm:px-10 md:px-12 py-3 sm:py-4 md:py-5 bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-600 text-white font-bold text-base sm:text-lg md:text-xl rounded-2xl overflow-hidden shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300"
               style={{
-                boxShadow: '0 10px 40px rgba(34, 211, 238, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset'
+                boxShadow:
+                  "0 10px 40px rgba(34, 211, 238, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset",
               }}
               whileHover={{ scale: shouldReduceMotion ? 1 : 1.05, y: -2 }}
               whileTap={{ scale: shouldReduceMotion ? 1 : 0.98 }}
@@ -175,7 +204,11 @@ export default function Hero({ data }: Props) {
                   animate={shouldReduceMotion ? {} : { x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
                 </motion.svg>
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-violet-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -185,7 +218,7 @@ export default function Hero({ data }: Props) {
               href={data.cta.secondary.href}
               className="group w-full sm:w-auto px-8 sm:px-10 md:px-12 py-3 sm:py-4 md:py-5 glass-light text-neutral-900 dark:text-white font-bold text-base sm:text-lg md:text-xl rounded-2xl border-2 border-cyan-300/70 dark:border-violet-500/50 hover:border-cyan-500 dark:hover:border-violet-400 transition-all duration-300 hover:shadow-2xl"
               style={{
-                boxShadow: '0 5px 20px rgba(168, 85, 247, 0.2)'
+                boxShadow: "0 5px 20px rgba(168, 85, 247, 0.2)",
               }}
               whileHover={{ scale: shouldReduceMotion ? 1 : 1.05, y: -2 }}
               whileTap={{ scale: shouldReduceMotion ? 1 : 0.98 }}
@@ -203,16 +236,24 @@ export default function Hero({ data }: Props) {
           >
             <motion.button
               onClick={() => {
-                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                document
+                  .getElementById("about")
+                  ?.scrollIntoView({ behavior: "smooth" });
               }}
               className="flex flex-col items-center gap-2 sm:gap-3 text-neutral-500 dark:text-neutral-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer group mx-auto"
-              animate={shouldReduceMotion ? {} : {
-                y: [0, 10, 0],
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              animate={
+                shouldReduceMotion
+                  ? {}
+                  : {
+                      y: [0, 10, 0],
+                    }
+              }
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               aria-label="Scroll to content"
             >
-              <span className="text-xs sm:text-sm font-medium tracking-wide uppercase">Scroll to explore</span>
+              <span className="text-xs sm:text-sm font-medium tracking-wide uppercase">
+                Scroll to explore
+              </span>
               <svg
                 className="w-5 h-5 sm:w-6 sm:h-6 group-hover:scale-110 transition-transform"
                 fill="none"
@@ -220,7 +261,11 @@ export default function Hero({ data }: Props) {
                 viewBox="0 0 24 24"
                 strokeWidth={2}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
               </svg>
             </motion.button>
           </motion.div>
@@ -232,7 +277,7 @@ export default function Hero({ data }: Props) {
         <>
           <motion.div
             className="absolute top-1/4 left-10 w-3 h-3 rounded-full"
-            style={{ backgroundColor: 'var(--color-primary-400)' }}
+            style={{ backgroundColor: "var(--color-primary-400)" }}
             animate={{
               scale: [1, 1.5, 1],
               opacity: [0.3, 0.8, 0.3],
@@ -241,7 +286,7 @@ export default function Hero({ data }: Props) {
           />
           <motion.div
             className="absolute bottom-1/3 right-20 w-4 h-4 rounded-full"
-            style={{ backgroundColor: 'var(--color-accent-400)' }}
+            style={{ backgroundColor: "var(--color-accent-400)" }}
             animate={{
               scale: [1.5, 1, 1.5],
               opacity: [0.3, 0.8, 0.3],
@@ -250,7 +295,7 @@ export default function Hero({ data }: Props) {
           />
           <motion.div
             className="absolute top-1/2 right-1/4 w-2 h-2 rounded-full"
-            style={{ backgroundColor: 'var(--color-primary-300)' }}
+            style={{ backgroundColor: "var(--color-primary-300)" }}
             animate={{
               scale: [1, 2, 1],
               opacity: [0.4, 1, 0.4],

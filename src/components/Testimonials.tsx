@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import type { Testimonial } from '../types/portfolio';
+import { motion } from "framer-motion";
+import type { Testimonial } from "../types/portfolio";
 
 interface TestimonialsProps {
   data: Testimonial[];
@@ -10,38 +10,41 @@ const container = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15
-    }
-  }
+      staggerChildren: 0.15,
+    },
+  },
 };
 
 const item = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
+  show: { opacity: 1, y: 0 },
 };
 
 export default function Testimonials({ data }: TestimonialsProps) {
   if (!data || data.length === 0) return null;
 
   return (
-    <section id="testimonials" className="py-32 px-6 md:px-8 bg-gradient-to-br from-white via-cyan-50/30 to-violet-50/30 dark:bg-gradient-to-br dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900">
+    <section
+      id="testimonials"
+      className="section-container py-20 sm:py-24 md:py-28 lg:py-32 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-white via-cyan-50/30 to-violet-50/30 dark:bg-gradient-to-br dark:from-neutral-900 dark:via-neutral-800 dark:to-neutral-900"
+    >
       <div className="max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 dark:text-white mb-6 text-center font-['Space_Grotesk']"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 dark:text-white mb-6 text-center font-['Space_Grotesk'] px-4"
         >
           Client Testimonials
         </motion.h2>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 text-center mb-20 max-w-3xl mx-auto"
+          className="text-lg sm:text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 text-center mb-16 sm:mb-20 max-w-3xl mx-auto px-4"
         >
           What people say about working with me
         </motion.p>
@@ -58,9 +61,9 @@ export default function Testimonials({ data }: TestimonialsProps) {
               key={testimonial.id}
               variants={item}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="glass-light rounded-2xl p-8 shadow-2xl hover:shadow-cyan-500/20 transition-all w-full max-w-md"
+              className="glass-light rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl hover:shadow-cyan-500/20 transition-all w-full max-w-md"
               style={{
-                boxShadow: '0 10px 40px rgba(34, 211, 238, 0.15)'
+                boxShadow: "0 10px 40px rgba(34, 211, 238, 0.15)",
               }}
             >
               <div className="flex flex-col items-center mb-6">
