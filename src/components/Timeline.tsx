@@ -26,7 +26,7 @@ export default function Timeline({ data }: TimelineProps) {
   return (
     <section
       id="timeline"
-      className="section-container py-20 sm:py-24 md:py-28 lg:py-32 px-4 sm:px-6 md:px-8 mt-[600px] pt-96 clear-both bg-gradient-to-br from-cyan-50/30 via-white to-violet-50/30 dark:bg-gradient-to-br dark:from-neutral-800 dark:via-neutral-900 dark:to-neutral-800"
+      className="section-container py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 clear-both bg-gradient-to-br from-cyan-50/30 via-white to-violet-50/30 dark:bg-gradient-to-br dark:from-neutral-800 dark:via-neutral-900 dark:to-neutral-800"
     >
       <div className="max-w-5xl mx-auto">
         <motion.h2
@@ -34,7 +34,7 @@ export default function Timeline({ data }: TimelineProps) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-neutral-900 dark:text-white mb-6 text-center font-['Space_Grotesk'] px-4"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white mb-4 sm:mb-6 text-center font-['Space_Grotesk'] px-4"
         >
           Experience & Education
         </motion.h2>
@@ -44,7 +44,7 @@ export default function Timeline({ data }: TimelineProps) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-lg sm:text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 text-center mb-16 sm:mb-20 max-w-3xl mx-auto px-4"
+          className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 text-center mb-12 sm:mb-16 md:mb-20 max-w-3xl mx-auto px-4"
         >
           My professional journey and educational background
         </motion.p>
@@ -59,7 +59,7 @@ export default function Timeline({ data }: TimelineProps) {
           {/* Timeline line - Centered gradient */}
           <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 via-blue-500 to-violet-600 hidden md:block rounded-full" />
 
-          <div className="space-y-12">
+          <div className="space-y-10 sm:space-y-12">
             {data.map((timelineItem, index) => (
               <motion.div
                 key={timelineItem.id}
@@ -77,7 +77,7 @@ export default function Timeline({ data }: TimelineProps) {
 
                 <motion.div
                   whileHover={{ scale: 1.03, y: -4 }}
-                  className="glass-light rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-2xl hover:shadow-cyan-500/20 transition-all max-w-2xl mx-auto"
+                  className="glass-light rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl hover:shadow-cyan-500/20 transition-all max-w-2xl mx-auto"
                   style={{
                     boxShadow: "0 10px 40px rgba(34, 211, 238, 0.15)",
                   }}

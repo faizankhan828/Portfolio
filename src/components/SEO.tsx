@@ -44,7 +44,7 @@ export default function SEO({ data }: SEOProps) {
 
     // Additional SEO tags
     updateMetaTag('viewport', 'width=device-width, initial-scale=1.0');
-    updateMetaTag('theme-color', '#6366f1');
+    updateMetaTag('theme-color', '#06b6d4');
   }, [data]);
 
   return null; // This component doesn't render anything

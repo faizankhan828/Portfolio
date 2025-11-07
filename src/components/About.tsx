@@ -25,7 +25,7 @@ export default function About({ data }: AboutProps) {
     <section
       id="about"
       ref={containerRef}
-      className="section-container relative py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-cyan-50/50 via-white to-violet-50/50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800"
+      className="section-container relative py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-cyan-50/50 via-white to-violet-50/50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800"
     >
       {/* Decorative gradient orbs + 3D Spheres */}
       {!shouldReduceMotion && (
@@ -72,7 +72,7 @@ export default function About({ data }: AboutProps) {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-16 sm:mb-20 md:mb-24 lg:mb-28"
+          className="text-center mb-16 sm:mb-20 md:mb-24"
         >
           <motion.div
             className="inline-flex items-center justify-center mb-6 sm:mb-8"
@@ -90,11 +90,11 @@ export default function About({ data }: AboutProps) {
             </div>
           </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white mb-8 sm:mb-10 font-['Space_Grotesk'] leading-tight px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white mb-6 sm:mb-8 font-['Space_Grotesk'] leading-tight px-4">
             About Me
           </h2>
 
-          <div className="flex items-center justify-center gap-4 mb-8 sm:mb-10">
+          <div className="flex items-center justify-center gap-4 mb-6 sm:mb-8">
             <div className="w-16 h-1 bg-gradient-to-r from-transparent to-cyan-500 rounded-full" />
             <div className="w-24 h-1.5 bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-600 rounded-full" />
             <div className="w-16 h-1 bg-gradient-to-l from-transparent to-violet-600 rounded-full" />
@@ -112,7 +112,7 @@ export default function About({ data }: AboutProps) {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.8, delay: 0.3 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="glass-light rounded-3xl p-12 sm:p-14 md:p-16 lg:p-20 relative overflow-visible shadow-2xl"
+            className="glass-light rounded-3xl p-8 sm:p-10 md:p-12 lg:p-14 relative overflow-visible shadow-2xl"
             style={{
               boxShadow:
                 "0 25px 60px -15px rgba(34, 211, 238, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) inset",
@@ -167,7 +167,7 @@ export default function About({ data }: AboutProps) {
                 delay: 0.5,
               }}
               viewport={{ once: true }}
-              className="text-lg sm:text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 leading-relaxed text-center max-w-3xl mx-auto px-4 break-words"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-neutral-700 dark:text-neutral-300 leading-relaxed text-center max-w-4xl mx-auto break-words"
             >
               {data.paragraph}
             </motion.p>
@@ -181,7 +181,7 @@ export default function About({ data }: AboutProps) {
                 delay: 0.6,
               }}
               viewport={{ once: true }}
-              className="mt-12 flex flex-wrap justify-center gap-4"
+              className="mt-10 flex flex-wrap justify-center gap-3 sm:gap-4"
             >
               {["React", "TypeScript", "Node.js", "UI/UX", "Framer Motion"].map(
                 (skill, index) => (
