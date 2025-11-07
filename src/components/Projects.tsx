@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import LazyImage from "./LazyImage";
@@ -8,19 +8,28 @@ interface ProjectsProps {
   data: Project[];
 }
 
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: isMobile ? 0.08 : 0.1,
     },
   },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 30, scale: 0.9 },
-  show: { opacity: 1, y: 0, scale: 1 },
+  hidden: { opacity: 0, y: isMobile ? 15 : 25 },
+  show: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: isMobile ? 0.4 : 0.5,
+      ease: [0.22, 1, 0.36, 1] as const
+    }
+  },
 };
 
 function ProjectCard({
@@ -30,35 +39,7 @@ function ProjectCard({
   project: Project;
   onClick: () => void;
 }) {
-  const [isHovered, setIsHovered] = useState(false);
   const shouldReduceMotion = useReducedMotion();
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x, { stiffness: 200, damping: 25 });
-  const mouseYSpring = useSpring(y, { stiffness: 200, damping: 25 });
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (shouldReduceMotion) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    x.set(0);
-    y.set(0);
-  };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -70,37 +51,19 @@ function ProjectCard({
   return (
     <motion.div
       variants={item}
-      style={
-        shouldReduceMotion
-          ? {}
-          : {
-              rotateX: isHovered ? rotateX : 0,
-              rotateY: isHovered ? rotateY : 0,
-              transformStyle: "preserve-3d",
-            }
-      }
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      whileHover={shouldReduceMotion ? {} : { scale: 1.03, z: 50 }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className="glass rounded-3xl cursor-pointer group relative depth-3d w-full"
+      whileHover={shouldReduceMotion || isMobile ? {} : { y: -8 }}
+      transition={{ duration: 0.3 }}
+      className="glass rounded-3xl cursor-pointer group relative w-full"
       onClick={onClick}
       onKeyPress={handleKeyPress}
       tabIndex={0}
       role="button"
       aria-label={`View details for ${project.title}`}
     >
-      {/* Animated border glow */}
-      <motion.div
-        className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          background:
-            "linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500))",
-          filter: "blur(20px)",
-          transform: "translateZ(-1px)",
-        }}
-      />
+      {/* Glow effect on hover - Desktop only */}
+      {!isMobile && (
+        <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary-500/10 to-accent-500/10 blur-lg -z-10" />
+      )}
 
       <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden rounded-t-3xl">
         <LazyImage
@@ -123,7 +86,6 @@ function ProjectCard({
 
       <motion.div
         className="p-6 sm:p-8 md:p-10 lg:p-12 relative flex flex-col overflow-visible"
-        style={shouldReduceMotion ? {} : { transform: "translateZ(40px)" }}
       >
         <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white mb-4 sm:mb-5 group-hover:gradient-text transition-all duration-300 font-['Space_Grotesk'] leading-tight break-words">
           {project.title}

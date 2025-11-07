@@ -23,6 +23,7 @@ type SubmitStatus = "idle" | "submitting" | "success" | "error";
 
 export default function Contact({ data }: ContactProps) {
   const shouldReduceMotion = useReducedMotion();
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const [formState, setFormState] = useState<FormData>({
     name: "",
     email: "",
@@ -99,44 +100,48 @@ export default function Contact({ data }: ContactProps) {
       className="section-container relative py-20 sm:py-24 md:py-28 lg:py-32 px-4 sm:px-6 md:px-8 overflow-hidden"
       aria-label="Contact section"
     >
-      {/* Animated gradient waves */}
-      <motion.div
-        className="absolute bottom-0 left-0 right-0 h-96 opacity-30"
-        animate={
-          shouldReduceMotion
-            ? {}
-            : {
-                y: [0, -20, 0],
-              }
-        }
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-r from-primary-400 via-accent-400 to-primary-400 rounded-t-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 right-10 h-32 bg-gradient-to-r from-accent-400 via-primary-400 to-accent-400 rounded-t-full blur-2xl" />
-      </motion.div>
+      {/* Animated gradient waves - Disabled on mobile for performance */}
+      {!isMobile && (
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-96 opacity-30"
+          animate={
+            shouldReduceMotion
+              ? {}
+              : {
+                  y: [0, -20, 0],
+                }
+          }
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-r from-primary-400 via-accent-400 to-primary-400 rounded-t-full blur-3xl" />
+          <div className="absolute bottom-10 left-10 right-10 h-32 bg-gradient-to-r from-accent-400 via-primary-400 to-accent-400 rounded-t-full blur-2xl" />
+        </motion.div>
+      )}
 
-      {/* Decorative orbs */}
-      <motion.div
-        className="absolute top-20 right-20 w-96 h-96 bg-accent-400/20 rounded-full blur-3xl"
-        animate={
-          shouldReduceMotion
-            ? {}
-            : {
-                scale: [1, 1.2, 1],
-                x: [-20, 20, -20],
-              }
-        }
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {/* Decorative orbs - Disabled on mobile for performance */}
+      {!isMobile && (
+        <motion.div
+          className="absolute top-20 right-20 w-96 h-96 bg-accent-400/20 rounded-full blur-3xl"
+          animate={
+            shouldReduceMotion
+              ? {}
+              : {
+                  scale: [1, 1.2, 1],
+                  x: [-20, 20, -20],
+                }
+          }
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+      )}
 
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Section heading */}
         <motion.div
           className="text-center mb-12 sm:mb-16 md:mb-20"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: isMobile ? 15 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ duration: isMobile ? 0.4 : 0.6 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <div className="inline-block mb-4 px-4 py-2 glass-light rounded-full text-primary-600 dark:text-primary-400 font-semibold border border-primary-400/20">
             ✉️ Get In Touch
@@ -154,10 +159,10 @@ export default function Contact({ data }: ContactProps) {
           {/* Contact Info */}
           <motion.div
             className="md:col-span-2 space-y-6"
-            initial={shouldReduceMotion ? {} : { opacity: 0, x: -30 }}
+            initial={shouldReduceMotion ? {} : { opacity: 0, x: isMobile ? -15 : -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            transition={{ duration: isMobile ? 0.4 : 0.6, delay: isMobile ? 0.1 : 0.2 }}
+            viewport={{ once: true, amount: 0.2 }}
           >
             <div className="glass rounded-3xl p-6 sm:p-8 md:p-10">
               <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white mb-4 font-['Space_Grotesk']">

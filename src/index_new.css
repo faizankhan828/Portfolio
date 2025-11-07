@@ -829,12 +829,164 @@ iframe {
    PERFORMANCE OPTIMIZATIONS
    ======================================== */
 
+/* Smooth scrolling with better performance */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed navigation */
+}
+
+/* Hardware acceleration for transforms */
+.glass,
+.glass-light,
+.card-hover {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Optimize repaints and reflows */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Reduce complexity on mobile */
+  .glass,
+  .glass-light {
+    backdrop-filter: blur(8px) !important;
+  }
+  
+  /* Faster transitions on mobile */
+  * {
+    transition-duration: 0.2s !important;
+  }
+  
+  /* Disable hover effects on touch devices */
+  @media (hover: none) {
+    .card-hover:hover {
+      transform: none;
+    }
+  }
+}
+
+/* GPU acceleration for animations */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-float,
+  .animate-spin,
+  .animate-pulse {
+    will-change: transform;
+  }
+}
+
+/* ========================================
+   AGGRESSIVE MOBILE OPTIMIZATIONS
+   ======================================== */
+
+/* Optimize images for faster loading */
+img {
+  content-visibility: auto;
+}
+
+/* Reduce reflows on scroll */
+.section-container {
+  contain: layout style paint;
+}
+
+/* Optimize font loading */
+@media (max-width: 768px) {
+  body {
+    font-display: swap;
+  }
+}
+
+/* Prevent layout shifts */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Touch optimization */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  a, button, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Disable hover effects */
+  *:hover {
+    transition: none;
+  }
+}
+
+/* Optimize text rendering on mobile */
+@media (max-width: 768px) {
+  body {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  /* Reduce shadow complexity on mobile */
+  .glass,
+  .glass-light {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Simplify gradients on mobile */
+  .gradient-text {
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+  }
+}
+
+/* Intersection Observer optimization */
+[data-lazy] {
+  content-visibility: auto;
+  contain-intrinsic-size: 500px;
+}
+
+/* Smooth scroll snap for sections */
+@media (min-width: 769px) {
+  .snap-container {
+    scroll-snap-type: y proximity;
+  }
+  
+  section {
+    scroll-snap-align: start;
+  }
+}
+
+/* Optimize animations on low-end devices */
+@media (prefers-reduced-motion: no-preference) {
+  @media (max-width: 768px) {
+    /* Reduce animation complexity */
+    * {
+      animation-timing-function: ease-in-out !important;
+    }
+  }
+}
+
+/* Memory optimization - unload off-screen content */
+section {
+  content-visibility: auto;
+}
+

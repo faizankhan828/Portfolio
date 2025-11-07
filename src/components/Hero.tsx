@@ -15,14 +15,14 @@ export default function Hero({ data }: Props) {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: isMobile ? 0.08 : 0.12,
-        delayChildren: isMobile ? 0.1 : 0.15,
+        staggerChildren: isMobile ? 0.06 : 0.1,
+        delayChildren: 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: isMobile ? 15 : 25 },
+    hidden: { opacity: 0, y: isMobile ? 10 : 20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -30,8 +30,8 @@ export default function Hero({ data }: Props) {
   };
 
   const itemTransition = {
-    duration: isMobile ? 0.4 : 0.5,
-    ease: [0.22, 1, 0.36, 1] as const,
+    duration: isMobile ? 0.3 : 0.4,
+    ease: [0.25, 0.1, 0.25, 1] as const,
   };
 
   return (

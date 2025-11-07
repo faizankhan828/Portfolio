@@ -5,19 +5,28 @@ interface TimelineProps {
   data: TimelineItem[];
 }
 
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
 const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: isMobile ? 0.08 : 0.12,
     },
   },
 };
 
 const item = {
-  hidden: { opacity: 0, x: -30 },
-  show: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, x: isMobile ? -15 : -25 },
+  show: { 
+    opacity: 1, 
+    x: 0,
+    transition: {
+      duration: isMobile ? 0.4 : 0.5,
+      ease: [0.22, 1, 0.36, 1] as const
+    }
+  },
 };
 
 export default function Timeline({ data }: TimelineProps) {
@@ -26,25 +35,25 @@ export default function Timeline({ data }: TimelineProps) {
   return (
     <section
       id="timeline"
-      className="section-container py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 clear-both bg-gradient-to-br from-cyan-50/30 via-white to-violet-50/30 dark:bg-gradient-to-br dark:from-neutral-800 dark:via-neutral-900 dark:to-neutral-800"
+      className="section-container py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 bg-gradient-to-br from-cyan-50/30 via-white to-violet-50/30 dark:bg-gradient-to-br dark:from-neutral-800 dark:via-neutral-900 dark:to-neutral-800"
     >
       <div className="max-w-5xl mx-auto">
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: isMobile ? 15 : 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white mb-4 sm:mb-6 text-center font-['Space_Grotesk'] px-4"
+          transition={{ duration: isMobile ? 0.4 : 0.5, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 dark:text-white mb-3 sm:mb-4 text-center font-['Space_Grotesk'] px-4"
         >
           Experience & Education
         </motion.h2>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: isMobile ? 10 : 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: isMobile ? 0.3 : 0.4, delay: 0.1, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-base sm:text-lg md:text-xl text-neutral-600 dark:text-neutral-400 text-center mb-12 sm:mb-16 md:mb-20 max-w-3xl mx-auto px-4"
+          className="text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-400 text-center mb-10 sm:mb-12 md:mb-16 max-w-3xl mx-auto px-4"
         >
           My professional journey and educational background
         </motion.p>
@@ -53,7 +62,7 @@ export default function Timeline({ data }: TimelineProps) {
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
           className="relative"
         >
           {/* Timeline line - Centered gradient */}

@@ -17,30 +17,40 @@ export default function Navigation() {
   );
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const sections = [
-        "hero",
-        "about",
-        "projects",
-        "skills",
-        "testimonials",
-        "timeline",
-        "contact",
-      ];
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sections = [
+            "hero",
+            "about",
+            "projects",
+            "skills",
+            "testimonials",
+            "timeline",
+            "contact",
+          ];
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
-            break;
+          for (const section of sections) {
+            const element = document.getElementById(section);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              if (rect.top <= 100 && rect.bottom >= 100) {
+                setActiveSection(section);
+                break;
+              }
+            }
           }
-        }
+          
+          ticking = false;
+        });
+        
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -54,7 +64,18 @@ export default function Navigation() {
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth" });
+    if (element) {
+      // Optimized smooth scroll with better performance
+      const isMobile = window.innerWidth < 768;
+      const offset = isMobile ? 60 : 80; // Account for fixed nav height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
     setIsOpen(false);
   };
 
