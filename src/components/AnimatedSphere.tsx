@@ -15,6 +15,7 @@ export default function AnimatedSphere({
   delay = 0 
 }: Props) {
   const shouldReduceMotion = useReducedMotion();
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   const positionClasses = {
     'top-left': '-top-20 -left-20',
@@ -33,7 +34,7 @@ export default function AnimatedSphere({
 
   return (
     <motion.div
-      className={`absolute ${positionClasses[position]} pointer-events-none`}
+      className={`absolute ${positionClasses[position]} pointer-events-none ${isMobile ? 'hidden' : ''}`}
       style={{
         width: size,
         height: size,

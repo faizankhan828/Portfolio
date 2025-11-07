@@ -1,5 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import type { Hero as HeroType } from "../types/portfolio";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 
@@ -9,29 +8,21 @@ interface Props {
 
 export default function Hero({ data }: Props) {
   const shouldReduceMotion = useReducedMotion();
-  const heroRef = useRef<HTMLElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0]);
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.15,
-        delayChildren: 0.2,
+        staggerChildren: isMobile ? 0.08 : 0.12,
+        delayChildren: isMobile ? 0.1 : 0.15,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
+    hidden: { opacity: 0, y: isMobile ? 15 : 25 },
     visible: {
       opacity: 1,
       y: 0,
@@ -39,59 +30,40 @@ export default function Hero({ data }: Props) {
   };
 
   const itemTransition = {
-    duration: 0.6,
+    duration: isMobile ? 0.4 : 0.5,
     ease: [0.22, 1, 0.36, 1] as const,
   };
 
   return (
     <section
-      ref={heroRef}
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-cyan-50 via-blue-50 to-violet-50 dark:from-secondary-900 dark:via-neutral-900 dark:to-neutral-800"
       aria-label="Hero section"
     >
-      {/* Animated gradient orbs - Optimized */}
-      {!shouldReduceMotion && (
+      {/* Gradient orbs - Static on mobile for performance */}
+      {!shouldReduceMotion && !isMobile && (
         <>
-          <motion.div
-            className="absolute top-1/4 -left-1/4 w-96 h-96 md:w-[500px] md:h-[500px] rounded-full opacity-30"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent)",
-              y,
-            }}
-            animate={{
-              scale: [1, 1.1, 1],
-              x: [0, 30, 0],
-            }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute bottom-1/4 -right-1/4 w-96 h-96 md:w-[500px] md:h-[500px] rounded-full opacity-30"
-            style={{
-              background:
-                "radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent)",
-              y,
-            }}
-            animate={{
-              scale: [1.1, 1, 1.1],
-              x: [0, -30, 0],
-            }}
-            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          />
+          <div className="absolute top-1/4 -left-1/4 w-96 h-96 md:w-[500px] md:h-[500px] rounded-full opacity-20 bg-gradient-to-br from-cyan-300 to-blue-400 blur-3xl" />
+          <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 md:w-[500px] md:h-[500px] rounded-full opacity-20 bg-gradient-to-br from-violet-300 to-purple-400 blur-3xl" />
         </>
       )}
 
-      {/* Content - Perfectly Centered & Responsive */}
-      <motion.div
-        style={{ opacity }}
-        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 text-center"
+      {/* Mobile static orbs */}
+      {isMobile && (
+        <>
+          <div className="absolute top-0 left-0 w-64 h-64 rounded-full opacity-15 bg-gradient-to-br from-cyan-300 to-blue-400 blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full opacity-15 bg-gradient-to-br from-violet-300 to-purple-400 blur-3xl" />
+        </>
+      )}
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 text-center"
       >
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-6 sm:space-y-8 md:space-y-10"
+          className="space-y-4 sm:space-y-6 md:space-y-8"
         >
           {/* Greeting Badge - Responsive */}
           <motion.div variants={itemVariants} transition={itemTransition}>
@@ -236,10 +208,10 @@ export default function Hero({ data }: Props) {
             </motion.button>
           </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
 
-      {/* Floating decorative elements */}
-      {!shouldReduceMotion && (
+      {/* Floating decorative elements - Desktop only */}
+      {!shouldReduceMotion && !isMobile && (
         <>
           <motion.div
             className="absolute top-1/4 left-10 w-3 h-3 rounded-full"
