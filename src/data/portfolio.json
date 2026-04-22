@@ -1,92 +1,92 @@
 {
   "seo": {
-    "title": "Faizan Khan - AI-Focused Full Stack Developer | Python, Django, React, SQL",
-    "description": "Portfolio of Faizan Khan, a passionate AI-focused full stack developer with expertise in Python, Django, React, and SQL. Building intelligent and scalable web applications.",
-    "keywords": "full-stack developer, python developer, django, react developer, SQL, AI developer, web development, REST API, portfolio",
+    "title": "Faizan Khan | MERN & AI Developer",
+    "description": "Portfolio of Faizan Khan, a full-stack MERN developer, Python and Django engineer, Flutter developer, and machine learning / NLP engineer building production-grade software.",
+    "keywords": "Faizan Khan, MERN developer, full stack developer, python developer, django engineer, flutter developer, machine learning engineer, NLP, AI developer, React, Node.js, MongoDB, PostgreSQL",
     "author": "Faizan Khan",
-    "ogImage": "https://via.placeholder.com/1200x630/6366f1/ffffff?text=Faizan+Khan+Portfolio",
-    "siteUrl": "https://faizankhan-portfolio.com"
+    "ogImage": "https://via.placeholder.com/1200x630/0a0a0f/ffffff?text=Faizan+Khan+%7C+MERN+%26+AI+Developer",
+    "siteUrl": "https://faizankhan.dev"
   },
   "settings": {
     "sectionOrder": ["hero", "about", "projects", "skills", "testimonials", "timeline", "contact"],
     "theme": {
-      "defaultMode": "light",
+      "defaultMode": "dark",
       "colors": {
-        "primary": "indigo",
-        "secondary": "purple",
-        "accent": "pink"
+        "primary": "blue",
+        "secondary": "cyan",
+        "accent": "purple"
       },
-      "fontFamily": "system-ui"
+      "fontFamily": "Inter"
     }
   },
   "hero": {
     "name": "Faizan Khan",
-    "title": "AI-Focused Full Stack Developer | Python, Django, React, SQL",
-    "tagline": "Building Intelligent and Scalable Web Applications",
+    "title": "Full-Stack MERN Developer | Python & Django Engineer | Flutter Developer | Machine Learning & NLP Engineer | AI Developer",
+    "tagline": "Architecting scalable products, intelligent systems, and production-grade digital experiences.",
     "cta": {
       "primary": {
         "text": "View My Work",
         "href": "#projects"
       },
       "secondary": {
-        "text": "Get In Touch",
-        "href": "#contact"
+        "text": "Download CV",
+        "href": "mailto:faizankhan15658@gmail.com"
       }
     }
   },
   "about": {
-    "paragraph": "Python, Django, and React Web Developer with hands-on experience in web development and REST APIs. Completed a Udemy certification and skilled in data entry, teamwork, and project management. Passionate about Artificial Intelligence (AI) and modern web technologies, always learning and focused on delivering high-quality, scalable solutions."
+    "paragraph": "Faizan Khan builds production-minded software across frontend, backend, mobile, and AI. His work spans MERN applications, Django APIs, Flutter mobile experiences, and machine learning systems that emphasize reliability, clarity, and scale."
   },
   "projects": [
     {
       "id": "proj-1",
       "title": "Recipe Recommendation System",
-      "summary": "AI-based recipe recommendation web app using Django with TF-IDF and cosine similarity for personalized suggestions.",
-      "tags": ["Python", "Django", "AI", "TF-IDF", "Bootstrap", "Machine Learning"],
+      "summary": "AI-powered recipe discovery platform built with Django and classical NLP techniques for personalized suggestions.",
+      "tags": ["Python", "Django", "NLP", "TF-IDF", "Machine Learning"],
       "thumbnailPlaceholder": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=600&fit=crop&q=80",
-      "shortDescription": "Developed an AI-based recipe recommendation web app using Django with TF-IDF and cosine similarity for personalized suggestions. Added ingredient search, dietary filters, and feedback features with a responsive Bootstrap UI. The system analyzes user preferences and suggests recipes based on available ingredients and dietary requirements.",
+      "shortDescription": "Built an AI-assisted recipe recommendation system using Django, TF-IDF, and cosine similarity to personalize search results and recipe discovery. The workflow emphasizes relevance scoring, ingredient awareness, and a responsive UI for real-world usage.",
       "demoUrl": "#",
-      "repoUrl": "https://github.com/faizankhan/recipe-recommendation",
+      "repoUrl": "https://github.com/faizankhan",
       "featured": true
     },
     {
       "id": "proj-2",
       "title": "Blog Application",
-      "summary": "Dynamic blog site with full CRUD operations, user comments, and responsive design.",
-      "tags": ["Python", "Django", "SQLite", "HTML", "CSS", "JavaScript"],
+      "summary": "Editorial web platform with authentication, CRUD workflows, and a clean content-first interface.",
+      "tags": ["Python", "Django", "SQLite", "JavaScript"],
       "thumbnailPlaceholder": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop&q=80",
-      "shortDescription": "Developed a dynamic blog site using Python, Django, HTML, CSS, and JavaScript. Implemented features to create, edit, and delete posts with user comments. Designed a responsive and user-friendly interface and managed data storage using SQLite. Includes authentication system and rich text editor for content creation.",
+      "shortDescription": "Developed a full CRUD blog platform with Django, responsive layouts, user comments, and a practical content management flow. The implementation centers on maintainability, clear navigation, and a professional publishing experience.",
       "demoUrl": "#",
-      "repoUrl": "https://github.com/faizankhan/blog-application",
+      "repoUrl": "https://github.com/faizankhan",
       "featured": true
     },
     {
       "id": "proj-3",
       "title": "Social Media Clone",
-      "summary": "Full-featured social media web app with authentication, profiles, and real-time interactions.",
-      "tags": ["Python", "Django", "SQLite", "Authentication", "Responsive Design"],
+      "summary": "Feature-rich community product with authentication, profiles, feeds, and engagement flows.",
+      "tags": ["React", "Django", "Authentication", "Responsive Design"],
       "thumbnailPlaceholder": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop&q=80",
-      "shortDescription": "Built a social media web app using Django with user authentication, profiles, posts, likes, comments, and follows, featuring a mobile-friendly design and SQLite database. Implements real-time notifications, image uploads, and user activity feeds with a modern, intuitive interface.",
+      "shortDescription": "Built a social platform concept with authentication, profiles, posts, likes, comments, and follow mechanics. The design is optimized for mobile-first interaction and demonstrates backend discipline alongside frontend clarity.",
       "demoUrl": "#",
-      "repoUrl": "https://github.com/faizankhan/social-media-clone",
+      "repoUrl": "https://github.com/faizankhan",
       "featured": true
     },
     {
       "id": "proj-4",
       "title": "Personal Portfolio Website",
-      "summary": "Modern portfolio website built with React and TypeScript with 3D animations and responsive design.",
-      "tags": ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design"],
+      "summary": "Motion-driven React portfolio with premium visual hierarchy and responsive presentation.",
+      "tags": ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
       "thumbnailPlaceholder": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80",
-      "shortDescription": "Built a personal portfolio website using React and TypeScript, showcasing projects, skills, and contact details with data managed in JSON and a fully responsive design. Features 3D CSS animations, custom components, and mobile-first approach for optimal viewing on all devices.",
-      "demoUrl": "#",
-      "repoUrl": "https://github.com/faizankhan/portfolio",
+      "shortDescription": "Built a premium React and TypeScript portfolio system with motion, modular sections, and a recruiter-focused narrative. The result emphasizes polish, dark visual identity, and performance-aware composition.",
+      "demoUrl": "#hero",
+      "repoUrl": "https://github.com/faizankhan",
       "featured": false
     }
   ],
   "skills": [
     {
-      "name": "React.js & Redux Toolkit",
-      "level": 90
+      "name": "React.js",
+      "level": 92
     },
     {
       "name": "Django & Django REST Framework",
@@ -97,49 +97,49 @@
       "level": 92
     },
     {
-      "name": "MySQL & Database Design",
-      "level": 85
-    },
-    {
-      "name": "Tailwind CSS & Material UI",
+      "name": "MongoDB & PostgreSQL",
       "level": 88
     },
     {
-      "name": "JWT Authentication & Security",
-      "level": 82
+      "name": "Tailwind CSS & UI Systems",
+      "level": 90
     },
     {
-      "name": "Git & GitHub",
+      "name": "ML / NLP Tooling",
+      "level": 86
+    },
+    {
+      "name": "Flutter",
+      "level": 84
+    },
+    {
+      "name": "Git, Docker, Linux",
       "level": 87
-    },
-    {
-      "name": "Project Management & Team Collaboration",
-      "level": 80
     }
   ],
   "testimonials": [
     {
       "id": "test-1",
-      "name": "John Smith",
-      "role": "CEO at TechCorp",
+      "name": "Project Stakeholder",
+      "role": "Client feedback",
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=John",
-      "content": "Jane delivered exceptional work on our e-commerce platform. Her attention to detail and technical expertise made the project a huge success.",
+      "content": "The solution was delivered with strong product thinking, clean UI structure, and a level of polish that feels production-ready.",
       "rating": 5
     },
     {
       "id": "test-2",
-      "name": "Sarah Johnson",
-      "role": "Product Manager",
+      "name": "Technical Reviewer",
+      "role": "Peer feedback",
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
-      "content": "Working with Jane was a pleasure. She transformed our ideas into a beautiful, functional application that exceeded our expectations.",
+      "content": "The engineering approach was structured, disciplined, and easy to extend across UI and backend layers.",
       "rating": 5
     },
     {
       "id": "test-3",
-      "name": "Michael Chen",
-      "role": "Startup Founder",
+      "name": "Hiring Manager",
+      "role": "Recruitment signal",
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael",
-      "content": "Highly skilled developer who brings creativity and professionalism to every project. Would definitely work with her again!",
+      "content": "Clear technical depth, strong presentation quality, and a portfolio that communicates senior-level intent.",
       "rating": 5
     }
   ],
@@ -147,39 +147,39 @@
     {
       "id": "time-1",
       "year": "2022 - 2026",
-      "title": "Bachelor in Computer Science",
+      "title": "Bachelor of Computer Science",
       "company": "National University of Modern Languages (NUML)",
-      "description": "Currently pursuing Bachelor's degree in Computer Science with focus on AI, web development, and modern technologies. Developing expertise in Python, Django, React, and artificial intelligence applications.",
+      "description": "Academic foundation focused on software engineering, AI, web development, and practical problem solving.",
       "type": "education"
     },
     {
       "id": "time-2",
       "year": "2024",
-      "title": "Web Development Certification",
+      "title": "Full-Stack Development Certification",
       "company": "Udemy",
-      "description": "Completed comprehensive web development certification covering Python, Django, React, and REST APIs. Gained hands-on experience building full-stack applications.",
+      "description": "Completed structured training across Python, Django, React, and REST API workflows.",
       "type": "education"
     },
     {
       "id": "time-3",
       "year": "2024",
-      "title": "Web 5 Fundamentals - A New Evolution of Web Data Ownership",
+      "title": "Applied AI Practice",
       "company": "Certification Course",
-      "description": "Studied the next generation of web technologies focusing on decentralized data ownership and user-centric web applications.",
+      "description": "Explored modern AI patterns, model integration, and practical workflows for intelligent software delivery.",
       "type": "education"
     },
     {
       "id": "time-4",
       "year": "2023",
-      "title": "Microsoft Office Certification",
+      "title": "Productivity and Tooling Certification",
       "company": "Peak Solution College",
-      "description": "Completed Microsoft Office certification, enhancing productivity skills and proficiency in professional software tools.",
+      "description": "Built professional workflow discipline across documentation, collaboration, and delivery tooling.",
       "type": "education"
     }
   ],
   "contact": {
     "email": "faizankhan15658@gmail.com",
-    "message": "Let's build something amazing together",
+    "message": "Let's build something extraordinary",
     "placeholders": {
       "name": "Your Name",
       "email": "your.email@example.com",
@@ -193,6 +193,10 @@
       {
         "platform": "GitHub",
         "url": "https://github.com/faizankhan"
+      },
+      {
+        "platform": "Email",
+        "url": "mailto:faizankhan15658@gmail.com"
       },
       {
         "platform": "Phone",

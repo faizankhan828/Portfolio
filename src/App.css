@@ -1,14 +1,16 @@
-/* App-specific styles */
 #root {
   width: 100%;
 }
 
-/* Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
+  background: #0a0a0f;
 }
 
-/* Screen reader only content */
+body {
+  background: #0a0a0f;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -33,50 +35,108 @@ html {
   white-space: normal;
 }
 
-/* Smooth theme transitions */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+:focus-visible {
+  outline: 2px solid rgba(0, 212, 255, 0.9);
+  outline-offset: 3px;
 }
 
-/* Disable transitions for motion elements (framer-motion handles these) */
-[data-framer-motion] * {
-  transition: none !important;
-}
-
-/* Custom scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #0f1117;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 5px;
+  background: linear-gradient(180deg, #4f8ef7, #7b5cf5);
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: linear-gradient(180deg, #00d4ff, #7b5cf5);
 }
 
-/* Dark mode scrollbar */
-.dark ::-webkit-scrollbar-track {
-  background: #1f2937;
+.gradient-text {
+  background: linear-gradient(135deg, #4f8ef7 0%, #00d4ff 45%, #7b5cf5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  background: #4b5563;
+.section-shell {
+  position: relative;
+  padding: clamp(5rem, 8vw, 8rem) 0;
 }
 
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+.section-divider {
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.9), rgba(123, 92, 245, 0.9), transparent);
 }
 
-/* Focus visible styles */
-:focus-visible {
-  outline: 2px solid #6366f1;
-  outline-offset: 2px;
+.hero-mesh {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(79, 142, 247, 0.15), transparent 0 18%),
+    radial-gradient(circle at 75% 15%, rgba(0, 212, 255, 0.12), transparent 0 16%),
+    radial-gradient(circle at 80% 75%, rgba(123, 92, 245, 0.14), transparent 0 20%),
+    linear-gradient(180deg, rgba(10, 10, 15, 0.88), rgba(10, 10, 15, 0.98));
+  animation: mesh-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes mesh-drift {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.04) translate3d(0, -10px, 0);
+  }
+}
+
+.glass-panel {
+  background: rgba(17, 17, 24, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+@media (max-width: 1024px) {
+  .section-shell {
+    padding: clamp(4rem, 9vw, 6rem) 0;
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 5rem;
+  }
+
+  .hero-mesh {
+    animation: none;
+  }
+
+  .glass-panel {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-mesh {
+    animation: none;
+  }
 }
 
